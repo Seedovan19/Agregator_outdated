@@ -32,3 +32,11 @@ $ go mod tidy
 $ go get "gorm.io/driver/postgres"
 $	go get "gorm.io/gorm"
 ```
+
+
+<hr>
+
+<h3>Текущий прогресс</h3>
+<ul>
+  <li>Подключена БД PostgreSQL</li>
+</ul>
