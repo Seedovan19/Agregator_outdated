@@ -1,46 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
-	"os"
 
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
+	"github.com/seedovan19/Agregator/pkg/database"
 )
 
-var db *gorm.DB
-var err error
-
 func main() {
-	// загружаем переменные окруженияs
-	host := os.Getenv("HOST")
-	dbPort := os.Getenv("DBPORT")
-	user := os.Getenv("USER")
-	dbName := os.Getenv("NAME")
-	password := os.Getenv("PASSWORD")
-
-	// строка соединения с базой данных
-	dbURI := fmt.Sprintf("host = %s user = %s dbname = %s sslmode = disable password = %s port = %s", host, user, dbName, password, dbPort)
-	// dbURI := "host=localhost user=danielseidov password=rrv370 dbname=agregator port=5432 sslmode=disable"
-
-	// открываем соединение с базой данных
-	db, err = gorm.Open(postgres.Open(dbURI), &gorm.Config{})
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		fmt.Println("Successfully connected to database")
-	}
-
-	//закрываем соединение с базой данных, когда функция main заканчивает свою работу
-	sqlDB, err := db.DB()
-	if err != nil {
-		log.Fatal(err)
-	}
-	sqlDB.Close()
+	database.Init()
 
 	// делаем миграцию в базу данных (создаем таблицы, если они еще не были созданы)
+	database.Migrate()
 
 	PORT := "127.0.0.1:8080"
 	log.Print("Running server on " + PORT)
