@@ -16,8 +16,9 @@ func main() {
 
 	PORT := "8083"
 	http.HandleFunc("/", Home_page)
+	http.HandleFunc("/adding_form", Adding_form)
 
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	// http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
 	log.Print("Running server on port " + PORT)
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
@@ -25,5 +26,10 @@ func main() {
 
 func Home_page(w http.ResponseWriter, r *http.Request) {
 	tpl, _ := template.ParseFiles("templates/home_page.html")
+	tpl.Execute(w, nil)
+}
+
+func Adding_form(w http.ResponseWriter, r *http.Request) {
+	tpl, _ := template.ParseFiles("templates/form.html")
 	tpl.Execute(w, nil)
 }
