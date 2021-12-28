@@ -8,23 +8,22 @@ import (
 	"github.com/seedovan19/Agregator/pkg/database"
 )
 
-var tpl = template.Must(template.ParseFiles("index.html"))
-
 func main() {
 	database.Init()
 
 	// делаем миграцию в базу данных (создаем таблицы, если они еще не были созданы)
 	database.Migrate()
 
-	PORT := "127.0.0.1:8083"
-	http.HandleFunc("/", CompleteTaskFunc)
+	PORT := "8083"
+	http.HandleFunc("/", Home_page)
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
-	log.Print("Running server on " + PORT)
-	log.Fatal(http.ListenAndServe(":8083", nil))
+	log.Print("Running server on port " + PORT)
+	log.Fatal(http.ListenAndServe(":"+PORT, nil))
 }
 
-func CompleteTaskFunc(w http.ResponseWriter, r *http.Request) {
+func Home_page(w http.ResponseWriter, r *http.Request) {
+	tpl, _ := template.ParseFiles("templates/home_page.html")
 	tpl.Execute(w, nil)
 }
