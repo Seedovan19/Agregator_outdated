@@ -18,20 +18,18 @@ type Warehouse struct {
 	gorm.Model
 
 	Id                 int    `gorm:"primaryKey;autoIncrement:true"`
+	Name               string `gorm:"not null"`
 	Square             int    `gorm:"not null"`
-	City               string `gorm:"not null"`
-	District           string
 	Adress             string `gorm:"not null"`
+	Shelf_storage_cost int    `gorm:"not null"`
+	Floor_storage_cost int    `gorm:"not null"`
 	Description        string
-	Shelf_storage_cost int `gorm:"not null"`
-	Floor_storage_cost int `gorm:"not null"`
 	Comment            string
 }
 
 type Building struct {
 	WarehouseID          int    `gorm:"not null"`
-	Warehouse_type       string `gorm:"not null"` //выпадайка
-	Building_square      int    `gorm:"not null"`
+	Warehouse_class      string `gorm:"not null"` //выпадайка
 	Year_of_construction datatypes.Date
 	Warehouse            Warehouse `gorm:"ForeignKey:WarehouseID;References: Id"`
 }
