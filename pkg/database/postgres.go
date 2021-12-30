@@ -34,7 +34,7 @@ type Building struct {
 	Warehouse            Warehouse `gorm:"ForeignKey:WarehouseID;References: Id"`
 }
 
-func Init() {
+func Open_connection() {
 	// загружаем переменные окружения
 	host := os.Getenv("HOST")
 	dbPort := os.Getenv("DBPORT")
@@ -57,7 +57,6 @@ func Init() {
 func Migrate() {
 	db.AutoMigrate(&Warehouse{})
 	db.AutoMigrate(&Building{})
-
 }
 
 func Close() {

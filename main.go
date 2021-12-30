@@ -12,10 +12,12 @@ import (
 var err error
 
 func main() {
-	database.Init()
+	database.Open_connection()
 
 	// делаем миграцию в базу данных (создаем таблицы, если они еще не были созданы)
 	database.Migrate()
+
+	database.Close()
 
 	PORT := "8083"
 	http.HandleFunc("/", home_page)
@@ -45,5 +47,19 @@ func warehouse_form(w http.ResponseWriter, r *http.Request) {
 }
 
 func add_warehouse(w http.ResponseWriter, r *http.Request) {
-	// name := r.FormValue("name")
+	adress := r.FormValue("adress")
+	name := r.FormValue("name")
+	square := r.FormValue("square")
+	class := r.FormValue("class")
+	// age_of_construction := r.FormValue("age_of_construction")
+	shelf_cost := r.FormValue("shelf_cost")
+	floor_cost := r.FormValue("floor_cost")
+	// description := r.FormValue("description")
+
+	if adress == "" || name == "" || square == "" || class == "" || shelf_cost == "" || floor_cost == "" {
+		fmt.Fprintf(w, "Не все данные заполнены")
+	} else {
+		database.Open_connection()
+		database.Close()
+	}
 }
