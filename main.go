@@ -35,7 +35,7 @@ func home_page(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 	}
-	tpl.Execute(w, nil)
+	tpl.Execute(w, nil)1
 }
 
 func warehouse_form(w http.ResponseWriter, r *http.Request) {
@@ -55,10 +55,11 @@ func add_warehouse(w http.ResponseWriter, r *http.Request) {
 	age_of_construction, _ := time.Parse(r.FormValue("age_of_construction"), "2019-07-10")
 	shelf_cost, _ := strconv.ParseInt(r.FormValue("shelf_cost")[0:], 10, 64)
 	floor_cost, _ := strconv.ParseInt(r.FormValue("floor_cost")[0:], 10, 64)
+	image := r.FormValue("image")
 	description := r.FormValue("description")
 
 	if adress == "" || name == "" || class == "" {
-		fmt.Fprintf(w, "Не все данные заполнены")
+		http.Redirect(w, r, "/", http.StatusSeeOther) // здесь должна быть обработка пустых полей
 	} else {
 		database.Open_connection()
 
@@ -69,6 +70,7 @@ func add_warehouse(w http.ResponseWriter, r *http.Request) {
 			Shelf_storage_cost: shelf_cost,
 			Floor_storage_cost: floor_cost,
 			Description:        description,
+			Image:              image,
 		}
 
 		building := database.Building{
@@ -79,5 +81,6 @@ func add_warehouse(w http.ResponseWriter, r *http.Request) {
 		database.Add_warehouse_record(warehouse, building)
 
 		database.Close()
+
 	}
 }
