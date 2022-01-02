@@ -45,7 +45,7 @@
     </div>
     <p class="py-1 lead text-center">Объявление будет доступно на fewstacks.ru</p>
     <div class="col-11 offset-1">
-        <form href="/add_warehouse" class="needs-validation" novalidate> <!-- Onsubmit??-->
+        <form class="needs-validation" action="/add_warehouse" method = "post" novalidate> <!-- Onsubmit??-->
           <div class="row g-2">
             <h5>Адрес и название</h5>
 
@@ -73,7 +73,7 @@
 
             <div class="col-sm-3">
               <label class="form-label">Площадь склада</label>
-              <input name="square" type="text" class="form-control" required>
+              <input name="square" type="integer" class="form-control" required>
               <div class="invalid-feedback">
                     Необходимо ввести числовое значение
               </div>
@@ -100,7 +100,7 @@
 
             <div class="col-3">
                 <label for="age_of_construction" class="form-label">Год постройки</label>
-                <input name="age_of_construction" type="text" class="form-control">
+                <input name="age_of_construction" type="number" class="form-control">
                 <span class="text-muted">(не обязательно)</span>
             </div>
             <div class="col-9"></div>
@@ -111,7 +111,7 @@
           
           <div class="col-3">
             <label class="form-label">Стеллажное хранение</label>
-            <input name="shelf_cost" type="text" class="form-control" required>
+            <input name="shelf_cost" type="number" class="form-control" required>
             <div class="invalid-feedback">
                   Необходимо ввести числовое значение
             </div>
@@ -123,7 +123,7 @@
 
           <div class="col-3">
             <label class="form-label">Напольное хранение</label>
-            <input name="floor_cost" type="text" class="form-control" required>
+            <input name="floor_cost" type="number" class="form-control" required>
             <div class="invalid-feedback">
                   Необходимо ввести числовое значение
             </div>

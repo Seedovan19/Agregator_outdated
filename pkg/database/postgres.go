@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-
-	"gorm.io/datatypes"
 )
 
 var db *gorm.DB
@@ -17,21 +16,22 @@ var err error
 type Warehouse struct {
 	gorm.Model
 
-	Id                 int    `gorm:"primaryKey;autoIncrement:true"`
+	ID                 int64  `gorm:"primaryKey"`
 	Name               string `gorm:"not null"`
-	Square             int    `gorm:"not null"`
+	Square             int64  `gorm:"not null"`
 	Adress             string `gorm:"not null"`
-	Shelf_storage_cost int    `gorm:"not null"`
-	Floor_storage_cost int    `gorm:"not null"`
+	Shelf_storage_cost int64  `gorm:"not null"`
+	Floor_storage_cost int64  `gorm:"not null"`
 	Description        string
 	Comment            string
+	Building           Building `gorm:"foreignkey: id; references: ID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }
 
 type Building struct {
-	WarehouseID          int    `gorm:"not null"`
+	gorm.Model
+
 	Warehouse_class      string `gorm:"not null"` //выпадайка
-	Year_of_construction datatypes.Date
-	Warehouse            Warehouse `gorm:"ForeignKey:WarehouseID;References: Id"`
+	Year_of_construction time.Time
 }
 
 func Open_connection() {
@@ -66,4 +66,9 @@ func Close() {
 		log.Fatal(err)
 	}
 	sqlDB.Close()
+}
+
+func Add_warehouse_record(warehouse_data Warehouse, building_data Building) {
+	db.Create(&warehouse_data)
+	db.Create(&building_data)
 }

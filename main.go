@@ -5,6 +5,8 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/seedovan19/Agregator/pkg/database"
 )
@@ -24,14 +26,12 @@ func main() {
 	http.HandleFunc("/form", warehouse_form)
 	http.HandleFunc("/add_warehouse", add_warehouse)
 
-	// http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
-
 	log.Print("Running server on port " + PORT)
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
 }
 
 func home_page(w http.ResponseWriter, r *http.Request) {
-	tpl, err := template.ParseFiles("templates/home_page.html")
+	tpl, err := template.ParseFiles("templates/home_page.gohtml")
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 	}
@@ -39,7 +39,7 @@ func home_page(w http.ResponseWriter, r *http.Request) {
 }
 
 func warehouse_form(w http.ResponseWriter, r *http.Request) {
-	tpl, err := template.ParseFiles("templates/form.html")
+	tpl, err := template.ParseFiles("templates/form.gohtml")
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 	}
@@ -47,19 +47,37 @@ func warehouse_form(w http.ResponseWriter, r *http.Request) {
 }
 
 func add_warehouse(w http.ResponseWriter, r *http.Request) {
+
 	adress := r.FormValue("adress")
 	name := r.FormValue("name")
-	square := r.FormValue("square")
+	square, _ := strconv.ParseInt(r.FormValue("square")[0:], 10, 64)
 	class := r.FormValue("class")
-	// age_of_construction := r.FormValue("age_of_construction")
-	shelf_cost := r.FormValue("shelf_cost")
-	floor_cost := r.FormValue("floor_cost")
-	// description := r.FormValue("description")
+	age_of_construction, _ := time.Parse(r.FormValue("age_of_construction"), "2019-07-10")
+	shelf_cost, _ := strconv.ParseInt(r.FormValue("shelf_cost")[0:], 10, 64)
+	floor_cost, _ := strconv.ParseInt(r.FormValue("floor_cost")[0:], 10, 64)
+	description := r.FormValue("description")
 
-	if adress == "" || name == "" || square == "" || class == "" || shelf_cost == "" || floor_cost == "" {
+	if adress == "" || name == "" || class == "" {
 		fmt.Fprintf(w, "Не все данные заполнены")
 	} else {
 		database.Open_connection()
+
+		warehouse := database.Warehouse{
+			Name:               name,
+			Square:             square,
+			Adress:             adress,
+			Shelf_storage_cost: shelf_cost,
+			Floor_storage_cost: floor_cost,
+			Description:        description,
+		}
+
+		building := database.Building{
+			Warehouse_class:      class,
+			Year_of_construction: age_of_construction,
+		}
+
+		database.Add_warehouse_record(warehouse, building)
+
 		database.Close()
 	}
 }
