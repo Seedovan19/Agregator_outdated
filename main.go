@@ -11,7 +11,6 @@ import (
 	"github.com/seedovan19/Agregator/pkg/database"
 )
 
-var err error
 var posts = []database.Warehouse{}
 
 func main() {
