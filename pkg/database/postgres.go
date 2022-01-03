@@ -13,6 +13,16 @@ import (
 var db *gorm.DB
 var err error
 
+type Person struct {
+	ID       int64  `gorm:"primaryKey"`
+	Name     string `gorm:"not null"`
+	Surname  string `gorm:"not null"`
+	Company  string `gorm:"not null"`
+	Phone    string `gorm:"not null"`
+	Email    string `gorm:"not null"`
+	Password string `gorm:"not null"`
+}
+
 type Warehouse struct {
 	gorm.Model
 
@@ -26,6 +36,12 @@ type Warehouse struct {
 	Description        string
 	Comment            string
 	Building           Building `gorm:"foreignkey: id; references: ID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+	// Phone              string
+}
+
+type Add_warehouse struct {
+	Warehouse_ID int64
+	Person_ID    int64
 }
 
 type Building struct {
@@ -78,10 +94,10 @@ func Show_warehouse_records() ([]Warehouse, error) {
 	var posts = []Warehouse{}
 	var warehouse Warehouse
 
-	res, err := db.Raw("SELECT id, name, square, adress, shelf_storage_cost, floor_storage_cost, image, description FROM warehouses").Rows()
+	res, err := db.Raw("SELECT name, square, adress, shelf_storage_cost, floor_storage_cost, image, description FROM warehouses").Rows()
 
 	for res.Next() {
-		res.Scan(&warehouse.ID, &warehouse.Name, &warehouse.Square, &warehouse.Adress, &warehouse.Shelf_storage_cost, &warehouse.Floor_storage_cost, &warehouse.Image, &warehouse.Description)
+		res.Scan(&warehouse.Name, &warehouse.Square, &warehouse.Adress, &warehouse.Shelf_storage_cost, &warehouse.Floor_storage_cost, &warehouse.Image, &warehouse.Description)
 		posts = append(posts, warehouse)
 	}
 	return posts, err
