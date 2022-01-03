@@ -12,6 +12,7 @@ import (
 )
 
 var err error
+var posts = []database.Warehouse{}
 
 func main() {
 	database.Open_connection()
@@ -23,7 +24,7 @@ func main() {
 
 	PORT := "8083"
 	http.HandleFunc("/", home_page)
-	http.HandleFunc("/form", warehouse_form)
+	http.HandleFunc("/form", warehouse_form_page)
 	http.HandleFunc("/add_warehouse", add_warehouse)
 
 	log.Print("Running server on port " + PORT)
@@ -33,15 +34,23 @@ func main() {
 func home_page(w http.ResponseWriter, r *http.Request) {
 	tpl, err := template.ParseFiles("templates/home_page.gohtml")
 	if err != nil {
-		fmt.Fprintf(w, err.Error())
+		log.Print(err.Error())
 	}
-	tpl.Execute(w, nil)1
+
+	database.Open_connection()
+
+	posts, err = database.Show_warehouse_records()
+	if err != nil {
+		log.Print(err.Error())
+	}
+	database.Close()
+	tpl.Execute(w, posts)
 }
 
-func warehouse_form(w http.ResponseWriter, r *http.Request) {
+func warehouse_form_page(w http.ResponseWriter, r *http.Request) {
 	tpl, err := template.ParseFiles("templates/form.gohtml")
 	if err != nil {
-		fmt.Fprintf(w, err.Error())
+		log.Print(err.Error())
 	}
 	tpl.Execute(w, nil)
 }
@@ -59,7 +68,7 @@ func add_warehouse(w http.ResponseWriter, r *http.Request) {
 	description := r.FormValue("description")
 
 	if adress == "" || name == "" || class == "" {
-		http.Redirect(w, r, "/", http.StatusSeeOther) // здесь должна быть обработка пустых полей
+		fmt.Fprintf(w, "Не все данные заполнены")
 	} else {
 		database.Open_connection()
 
@@ -81,6 +90,6 @@ func add_warehouse(w http.ResponseWriter, r *http.Request) {
 		database.Add_warehouse_record(warehouse, building)
 
 		database.Close()
-
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
 }

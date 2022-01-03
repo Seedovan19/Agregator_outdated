@@ -73,3 +73,16 @@ func Add_warehouse_record(warehouse_data Warehouse, building_data Building) {
 	db.Create(&warehouse_data)
 	db.Create(&building_data)
 }
+
+func Show_warehouse_records() ([]Warehouse, error) {
+	var posts = []Warehouse{}
+	var warehouse Warehouse
+
+	res, err := db.Raw("SELECT id, name, square, adress, shelf_storage_cost, floor_storage_cost, image, description FROM warehouses").Rows()
+
+	for res.Next() {
+		res.Scan(&warehouse.ID, &warehouse.Name, &warehouse.Square, &warehouse.Adress, &warehouse.Shelf_storage_cost, &warehouse.Floor_storage_cost, &warehouse.Image, &warehouse.Description)
+		posts = append(posts, warehouse)
+	}
+	return posts, err
+}
