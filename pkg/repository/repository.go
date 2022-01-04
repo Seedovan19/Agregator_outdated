@@ -7,6 +7,7 @@ import (
 
 type Authorization interface {
 	CreateUser(user agregator.User) (int, error)
+	GetUser(email, password string) (agregator.User, error)
 }
 
 type Warehouse interface {
