@@ -18,7 +18,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.LoadHTMLGlob("../templates/*")
 
 	router.GET("/", h.Home_page)
-	router.POST("/form", h.Warehouse_form_page)
+	router.GET("/form", h.Warehouse_form_page)
 
 	auth := router.Group("/auth")
 	{

@@ -25,7 +25,6 @@ func (h *Handler) Add_warehouse(c *gin.Context) {
 	if adress == "" || name == "" || class == "" {
 		log.Printf("Форма заполнена некорректно")
 	} else {
-
 		warehouse := agregator.Warehouse{
 			Name:               name,
 			Square:             square,
