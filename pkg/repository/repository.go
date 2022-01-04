@@ -10,6 +10,8 @@ type Authorization interface {
 }
 
 type Warehouse interface {
+	Add_warehouse_record(warehouse_data agregator.Warehouse, building_data agregator.Building) (int, error)
+	Show_warehouse_records() ([]agregator.Warehouse, error)
 }
 
 type Repository struct {
@@ -20,5 +22,6 @@ type Repository struct {
 func NewRepository(db *gorm.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthPostgres(db),
+		Warehouse:     NewWarehousePostgres(db),
 	}
 }

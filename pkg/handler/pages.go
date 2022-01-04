@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/seedovan19/Agregator/pkg/repository"
 )
 
 func (h *Handler) Home_page(c *gin.Context) {
@@ -14,7 +13,7 @@ func (h *Handler) Home_page(c *gin.Context) {
 	// 	log.Print(err.Error())
 	// }
 
-	posts, err := repository.Show_warehouse_records()
+	posts, err := h.services.Warehouse.Show_warehouse_records()
 	if err != nil {
 		log.Print(err.Error())
 	}

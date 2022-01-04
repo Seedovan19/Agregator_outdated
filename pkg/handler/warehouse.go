@@ -8,7 +8,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	agregator "github.com/seedovan19/Agregator"
-	"github.com/seedovan19/Agregator/pkg/repository"
 )
 
 func (h *Handler) Add_warehouse(c *gin.Context) {
@@ -42,7 +41,7 @@ func (h *Handler) Add_warehouse(c *gin.Context) {
 			Year_of_construction: age_of_construction,
 		}
 
-		repository.Add_warehouse_record(warehouse, building)
+		h.services.Warehouse.Add_warehouse_record(warehouse, building)
 
 		c.Redirect(http.StatusMovedPermanently, "/")
 	}
