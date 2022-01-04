@@ -17,22 +17,10 @@
 <br>
 
 ```console
-$ source .env
 $ go run main.go
 ```
 <br>
-4. Возможно, потребуются команды (но вряд ли, раз есть файл go.mod):
-<br>
 
-```console
-$ go mod init
-$ go mod tidy
-```
-
-```console
-$ go get "gorm.io/driver/postgres"
-$	go get "gorm.io/gorm"
-```
 
 
 <hr>
