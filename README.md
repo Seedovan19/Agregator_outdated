@@ -19,8 +19,6 @@
 ```console
 $ go run main.go
 ```
-<br>
-
 
 
 <hr>
