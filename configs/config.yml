@@ -1,0 +1,8 @@
+port: "8083"
+
+db: 
+  dialect: "postgres"
+  host: "localhost"
+  dbport: "5432"
+  name: "agregator"
+  sslmode: "disable"
