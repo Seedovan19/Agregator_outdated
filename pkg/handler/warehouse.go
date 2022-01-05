@@ -33,7 +33,7 @@ func (h *Handler) Add_warehouse(c *gin.Context) {
 		log.Fatalf(err.Error())
 	}
 
-	thumb.Write(c.Writer)
+	thumb.Save("../images/saved_images") // правильно сохраняет фотку??
 
 	if adress == "" || name == "" || class == "" {
 		log.Printf("Форма заполнена некорректно")
@@ -52,7 +52,13 @@ func (h *Handler) Add_warehouse(c *gin.Context) {
 			Year_of_construction: age_of_construction,
 		}
 
-		h.services.Warehouse.Add_warehouse_record(warehouse, building)
+		id, err := h.services.Warehouse.Add_warehouse_record(warehouse, building)
+
+		if err != nil {
+			log.Fatalf(err.Error())
+		}
+
+		log.Printf("Inserted warehouse with id: %d", id)
 
 		c.Redirect(http.StatusMovedPermanently, "/")
 	}

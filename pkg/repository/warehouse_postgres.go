@@ -14,9 +14,9 @@ func NewWarehousePostgres(db *gorm.DB) *WarehousePostgres {
 }
 
 func (r *WarehousePostgres) Add_warehouse_record(warehouse_data agregator.Warehouse, building_data agregator.Building) (int, error) {
-	r.db.Create(&warehouse_data)
+	result := r.db.Create(&warehouse_data)
 	r.db.Create(&building_data)
-	return 0, nil // переделать заглушку, чтобы возвращала id
+	return int(warehouse_data.ID), result.Error
 }
 
 func (r *WarehousePostgres) Show_warehouse_records() ([]agregator.Warehouse, error) {
