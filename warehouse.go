@@ -15,7 +15,6 @@ type Warehouse struct {
 	Adress             string `gorm:"not null"`
 	Shelf_storage_cost int64  `gorm:"not null"`
 	Floor_storage_cost int64  `gorm:"not null"`
-	Image              string `gorm:"image"`
 	Description        string
 	Comment            string
 	Building           Building `gorm:"foreignkey: id; references: ID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`

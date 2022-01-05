@@ -23,10 +23,10 @@ func (r *WarehousePostgres) Show_warehouse_records() ([]agregator.Warehouse, err
 	var posts = []agregator.Warehouse{}
 	var warehouse agregator.Warehouse
 
-	res, err := r.db.Raw("SELECT name, square, adress, shelf_storage_cost, floor_storage_cost, image, description FROM warehouses").Rows()
+	res, err := r.db.Raw("SELECT name, square, adress, shelf_storage_cost, floor_storage_cost, description FROM warehouses").Rows()
 
 	for res.Next() {
-		res.Scan(&warehouse.Name, &warehouse.Square, &warehouse.Adress, &warehouse.Shelf_storage_cost, &warehouse.Floor_storage_cost, &warehouse.Image, &warehouse.Description)
+		res.Scan(&warehouse.Name, &warehouse.Square, &warehouse.Adress, &warehouse.Shelf_storage_cost, &warehouse.Floor_storage_cost, &warehouse.Description)
 		posts = append(posts, warehouse)
 	}
 	return posts, err

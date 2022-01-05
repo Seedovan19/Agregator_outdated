@@ -17,18 +17,18 @@
     <main class="px-3">
       <h1>Подберите подходящий склад фулфилмента</h1>
     </main>
+    <div>
+      {{ range . }}
+      <div class = "alert alert-danger">
+        <h2>{{ .Name }}</h2>
+        <p>{{ . }}</p>
+      </div>
+      {{ else }}
+      <p class = "lead ">Статей нет!</p>
+      {{ end }}
 
-    {{ range . }}
-    <div class = "alert alert-danger">
-      <h2>{{ .Name }}</h2>
-      <p>{{ . }}</p>
+      {{ template "footer.gohtml" .}}
     </div>
-    {{ else }}
-    <p class = "lead ">Статей нет!</p>
-    {{ end }}
-
-    {{ template "footer.gohtml" .}}
-
   </div>
   
   
