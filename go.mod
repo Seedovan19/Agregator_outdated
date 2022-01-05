@@ -5,9 +5,12 @@ go 1.17
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.7.7
+	github.com/olahol/go-imageupload v0.0.0-20160503070439-09d2b92fa05e
 	gorm.io/driver/postgres v1.2.3
 	gorm.io/gorm v1.22.4
 )
+
+require github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect

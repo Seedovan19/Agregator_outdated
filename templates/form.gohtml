@@ -24,7 +24,7 @@
     </div>
     <p class="py-1 lead text-center">Объявление будет доступно на fewstacks.ru</p>
     <div class="col-11 offset-1">
-        <form class="needs-validation" action="/api/warehouses/add_warehouse" method = "post" novalidate> <!-- Onsubmit??-->
+        <form class="needs-validation" action="/api/warehouses/add_warehouse" method = "post" enctype="multipart/form-data" novalidate> <!-- Onsubmit??-->
           <div class="row g-2">
             <h5>Адрес и название</h5>
 
@@ -119,7 +119,7 @@
             <br>     
             <label class="form-label">Фотографии</label>
             <br>
-            <input type="file" name="image">
+            <input type="file" name="file">
           </div>
 
           <div class="col-11">
