@@ -11,6 +11,12 @@ document.querySelector("#submit").onclick = function(){
         body: JSON.stringify(object) // <-- Post parameters        
     })
     let result = await response.json();
-    sessionStorage.setItem('token', result.token);
+    if (result.token != null) {
+        sessionStorage.setItem('token', result.token);
+    }
+    else {
+        alert("Неправильный email или пароль")
+    }
     })() 
+
 };

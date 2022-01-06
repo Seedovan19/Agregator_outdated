@@ -33,9 +33,6 @@ type signInInput struct {
 func (h *Handler) signIn(c *gin.Context) {
 	var input signInInput
 
-	// input.Email = c.PostForm("email")
-	// input.Password = c.PostForm("password")
-
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
