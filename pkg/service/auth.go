@@ -50,7 +50,7 @@ func (s *AuthService) GenerateToken(email, password string) (string, error) {
 		user.ID,
 	})
 
-	return token.SignedString([]byte(signingKey))
+	return token.SignedString([]byte(signingKey)) //TODO: signing key должна быть в .env
 }
 
 func (s *AuthService) ParseToken(accessToken string) (int, error) {

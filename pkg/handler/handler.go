@@ -17,10 +17,12 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 	router.Static("/assets", "../assets")
 	router.Static("/images", "../images")
+	router.Static("/javascript", "../javascript")
 	router.LoadHTMLGlob("../templates/*")
 
 	router.GET("/", h.Home_page)
 	router.GET("/form", h.Warehouse_form_page)
+	router.GET("/auth_form", h.Auth_form_page)
 
 	auth := router.Group("/auth")
 	{

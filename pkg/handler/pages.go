@@ -27,3 +27,11 @@ func (h *Handler) Warehouse_form_page(c *gin.Context) {
 		nil,
 	)
 }
+
+func (h *Handler) Auth_form_page(c *gin.Context) {
+	c.HTML(
+		http.StatusOK,
+		"auth_form.gohtml",
+		nil,
+	)
+}
