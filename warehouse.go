@@ -11,7 +11,7 @@ type Warehouse struct {
 
 	ID                 int64  `gorm:"primaryKey"`
 	Name               string `gorm:"not null"`
-	Square             int64  `gorm:"not null"`
+	Square             int64  `gorm:"not null" `
 	Adress             string `gorm:"not null"`
 	Shelf_storage_cost int64  `gorm:"not null"`
 	Floor_storage_cost int64  `gorm:"not null"`
@@ -24,6 +24,6 @@ type Warehouse struct {
 type Building struct {
 	gorm.Model
 
-	Warehouse_class      string `gorm:"not null"` //выпадайка
+	Warehouse_class      string `gorm:"not null"`
 	Year_of_construction time.Time
 }

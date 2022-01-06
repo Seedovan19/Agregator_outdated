@@ -13,10 +13,31 @@ func (h *Handler) Home_page(c *gin.Context) {
 		log.Print(err.Error())
 	}
 
+	header := c.GetHeader(authorizationHeader)
+	if header != "" {
+		_, err := h.services.Authorization.ParseToken(header)
+		if err != nil {
+			newErrorResponse(c, http.StatusUnauthorized, err.Error())
+			return
+		}
+		c.HTML(
+			http.StatusOK,
+			"home_page.gohtml",
+			gin.H{
+				"posts":  posts,
+				"IsAuth": true,
+			},
+		)
+		return
+	}
+
 	c.HTML(
 		http.StatusOK,
 		"home_page.gohtml",
-		posts,
+		gin.H{
+			"posts":  posts,
+			"IsAuth": false,
+		},
 	)
 }
 

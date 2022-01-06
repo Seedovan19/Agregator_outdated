@@ -24,14 +24,14 @@
     </div>
     <p class="py-1 lead text-center">Объявление будет доступно на fewstacks.ru</p>
     <div class="col-11 offset-1">
-        <form class="needs-validation" action="/api/warehouses/add_warehouse" method = "post" enctype="multipart/form-data" novalidate> <!-- Onsubmit??-->
+        <form class="needs-validation" enctype="multipart/form-data" novalidate> 
           <div class="row g-2">
             <h5>Адрес и название</h5>
 
             <div class="col-11">
                 <label for="adress" class="form-label">Адрес</label>
                 <div class="input-group has-validation">
-                  <input name="adress" type="text" class="form-control" placeholder="Введите адрес склада" required>
+                  <input name="adress" type="text" class="form-control" id="adress" placeholder="Введите адрес склада" required>
                 <div class="invalid-feedback">
                     Необходимо ввести адрес склада.
                   </div>
@@ -40,7 +40,7 @@
 
             <div class="col-sm-11">
               <label class="form-label">Название объявления</label>
-              <input name="name" type="text" class="form-control" required placeholder="Пример: 'Логистическая компания Платина'" >
+              <input name="name" type="text" class="form-control" id="name" required placeholder="Пример: 'Логистическая компания Платина'" >
               <div class="invalid-feedback">
                     Необходимо ввести название объявления
               </div>
@@ -52,7 +52,7 @@
 
             <div class="col-sm-3">
               <label class="form-label">Площадь склада</label>
-              <input name="square" type="integer" class="form-control" required>
+              <input name="square" type="integer" class="form-control" id="square" required>
               <div class="invalid-feedback">
                     Необходимо ввести числовое значение
               </div>
@@ -65,8 +65,8 @@
             <div class="col-3">
               <label for="warehouse_class" class="form-label">Класс здания</label>
               <p>
-              <select name="class" class="form-select">
-                <option disabled selected value></option>>
+              <select name="class" class="form-select" id="class"> 
+                <option disabled selected value></option>
                 <option value="A+">A+</option>
                 <option value="A">A</option>
                 <option value="B+">B+</option>
@@ -79,7 +79,7 @@
 
             <div class="col-3">
                 <label for="age_of_construction" class="form-label">Год постройки</label>
-                <input name="age_of_construction" type="number" class="form-control">
+                <input name="age_of_construction" type="number" class="form-control" id="age_of_construction">
                 <span class="text-muted">(не обязательно)</span>
             </div>
             <div class="col-9"></div>
@@ -90,7 +90,7 @@
           
           <div class="col-3">
             <label class="form-label">Стеллажное хранение</label>
-            <input name="shelf_cost" type="number" class="form-control" required>
+            <input name="shelf_cost" type="number" class="form-control" id="shelf_cost" required>
             <div class="invalid-feedback">
                   Необходимо ввести числовое значение
             </div>
@@ -102,7 +102,7 @@
 
           <div class="col-3">
             <label class="form-label">Напольное хранение</label>
-            <input name="floor_cost" type="number" class="form-control" required>
+            <input name="floor_cost" type="number" class="form-control" id="floor_cost" required>
             <div class="invalid-feedback">
                   Необходимо ввести числовое значение
             </div>
@@ -115,24 +115,23 @@
           <hr class="my-4 col-11">
 
           <h5>Дополнительно</h5>
-          <div class="col-11">       
+          <!-- <div class="col-11">       
             <br>     
             <label class="form-label">Фотографии</label>
             <br>
             <input type="file" name="file">
-          </div>
+          </div> -->
 
           <div class="col-11">
-            <br>
             <label class="form-label">Описание</label>
             <br>
-            <textarea name="description" type="text" class="form-control"></textarea>
+            <textarea name="description" type="text" class="form-control" id="description"></textarea>
           </div>
 
           </div>
 
           <hr class="my-4 col-11">
-          <button class="btn btn-primary btn-lg offset-3 col-5" type="submit">Добавить склад</button>
+          <button class="btn btn-primary btn-lg offset-3 col-5" type="submit" id="submit">Добавить склад</button>
 
         </form> 
     </div>
@@ -148,5 +147,7 @@
   </footer>
 </div>
 </body>
+<script src="../javascript/form.js"></script>
+
 </html>
 

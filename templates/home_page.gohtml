@@ -12,19 +12,25 @@
 <body class="text-center text-black bg-white">
     
   <div class="cover-container h-100 mx-auto">
-    {{ template "header.gohtml" .}}
+    
+    {{if .IsAuth}}
+      {{ template "auth_header.gohtml" .}}
+    {{ else }}
+      {{ template "header.gohtml" .}}
+    {{end}} 
+    
   
     <main class="px-3">
       <h1>Подберите подходящий склад фулфилмента</h1>
     </main>
     <div>
-      {{ range . }}
-      <div class = "alert alert-danger">
-        <h2>{{ .Name }}</h2>
-        <p>{{ . }}</p>
-      </div>
+      {{ range .posts }}
+        <div class = "alert alert-danger">
+          <h2>{{ .Name }}</h2>
+          <p>{{ . }}</p>
+        </div>
       {{ else }}
-      <p class = "lead ">Статей нет!</p>
+        <p class = "lead ">Складов нет!</p>
       {{ end }}
 
       {{ template "footer.gohtml" .}}
