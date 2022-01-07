@@ -13,7 +13,7 @@ document.querySelector("#submit").onclick = function(){
     fetch("/api/warehouses/add_warehouse", {
         method: 'POST',
         headers: {
-            Authorization: sessionStorage.token
+            Authorization: localStorage.getItem('token')
         },
         body: JSON.stringify(object) // <-- Post parameters        
     })
