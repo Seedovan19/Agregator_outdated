@@ -1,0 +1,79 @@
+.title_text {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;;
+}
+
+.post {
+    text-align: left;
+    margin-left: 490px;
+    width: 700px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    margin-top: 25px;
+    padding: 15px;
+}
+
+.post_name {
+    color: black;
+    margin-bottom: 21px;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;;
+}
+
+.post_adress {
+    color: #0C4284;
+    font-size: 15px;
+    font-family: 'Montserrat';
+    margin-bottom: 29px;
+}
+
+.post_description {
+    color: black;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.cost_headers {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    text-align: center;
+}
+
+div.post_footer {
+    display:inline-block;
+    font-family: 'Montserrat';
+}
+
+.square_icon {
+    color: black;
+    margin-right: 5px;
+}
+
+.post_square {
+    color: black;
+    margin-right:70px;
+}
+
+.post_shelf_cost{
+    margin-left:10px;
+    margin-right:57px;
+}
+
+.post_shelf_cost > div {
+    color: #0C4284;
+    font-size: 22px;
+    display:inline-block;
+}
+
+.post_floor_cost{
+    margin-left:10px;
+}
+
+.post_floor_cost > div {
+    color: #0C4284;
+    font-size: 22px;
+    display:inline-block;
+}

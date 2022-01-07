@@ -52,10 +52,7 @@
 
             <div class="col-sm-3">
               <label class="form-label">Площадь склада</label>
-              <input name="square" type="integer" class="form-control" id="square" required>
-              <div class="invalid-feedback">
-                    Необходимо ввести числовое значение
-              </div>
+              <input name="square" type="integer" class="form-control" id="square">
             </div>
             <div class="col-sm-3"> 
                 <label></label>
@@ -65,7 +62,7 @@
             <div class="col-3">
               <label for="warehouse_class" class="form-label">Класс здания</label>
               <p>
-              <select name="class" class="form-select" id="class"> 
+              <select name="class" class="form-select" type="text" id="class"> 
                 <option disabled selected value></option>
                 <option value="A+">A+</option>
                 <option value="A">A</option>
@@ -79,7 +76,7 @@
 
             <div class="col-3">
                 <label for="age_of_construction" class="form-label">Год постройки</label>
-                <input name="age_of_construction" type="number" class="form-control" id="age_of_construction">
+                <input name="age_of_construction" type="integer" class="form-control" id="age_of_construction">
                 <span class="text-muted">(не обязательно)</span>
             </div>
             <div class="col-9"></div>
@@ -90,10 +87,7 @@
           
           <div class="col-3">
             <label class="form-label">Стеллажное хранение</label>
-            <input name="shelf_cost" type="number" class="form-control" id="shelf_cost" required>
-            <div class="invalid-feedback">
-                  Необходимо ввести числовое значение
-            </div>
+            <input name="shelf_cost" type="integer" class="form-control" id="shelf_cost">
           </div>
           <div class="col-sm-3"> 
             <label></label>
@@ -102,10 +96,7 @@
 
           <div class="col-3">
             <label class="form-label">Напольное хранение</label>
-            <input name="floor_cost" type="number" class="form-control" id="floor_cost" required>
-            <div class="invalid-feedback">
-                  Необходимо ввести числовое значение
-            </div>
+            <input name="floor_cost" type="integer" class="form-control" id="floor_cost">
           </div>
           <div class="col-sm-2"> 
             <label></label>
