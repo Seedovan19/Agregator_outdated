@@ -6,14 +6,15 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/dgrijalva/jwt-go"
+	// "github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt/v4"
 	agregator "github.com/seedovan19/Agregator"
 	"github.com/seedovan19/Agregator/pkg/repository"
 )
 
 const (
 	salt       = "cqjksdsvnqui154981dmsioa"
-	signingKey = "3124[aD[PO#SDsdafhjvbahfbv"
+	signingKey = "uihorlefadovlur2938vnuq"
 	tokenTTL   = 12 * time.Hour
 )
 

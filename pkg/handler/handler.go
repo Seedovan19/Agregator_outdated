@@ -23,6 +23,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.GET("/", h.Home_page)
 	router.GET("/form", h.Warehouse_form_page)
 	router.GET("/auth_form", h.Auth_form_page)
+	router.GET("/sign_up_form", h.Sign_up_form_page)
 
 	auth := router.Group("/auth")
 	{

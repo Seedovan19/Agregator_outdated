@@ -51,6 +51,7 @@ func (h *Handler) Add_warehouse(c *gin.Context) {
 		return
 	}
 
+	log.Print(insertingValue.Floor_storage_cost)
 	warehouse := agregator.Warehouse{
 		Name:               insertingValue.Name,
 		Square:             insertingValue.Square,

@@ -15,6 +15,7 @@ func (h *Handler) Home_page(c *gin.Context) {
 
 	header := c.GetHeader(authorizationHeader)
 	if header != "" {
+		log.Print(header)
 		_, err := h.services.Authorization.ParseToken(header)
 		if err != nil {
 			newErrorResponse(c, http.StatusUnauthorized, err.Error())
@@ -53,6 +54,14 @@ func (h *Handler) Auth_form_page(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
 		"auth_form.gohtml",
+		nil,
+	)
+}
+
+func (h *Handler) Sign_up_form_page(c *gin.Context) {
+	c.HTML(
+		http.StatusOK,
+		"sign_up_form.gohtml",
 		nil,
 	)
 }

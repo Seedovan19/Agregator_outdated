@@ -26,17 +26,24 @@ header {
   border-radius: 7px;
 }
 
-.form {
-  background-color: #009EFF;
+.form_btn {
+  background-color: #0093ED;
   border-color: #009EFF;
   border-width: 3px;
 }
 
 .sign_in {
-  margin-left: 20px;
+  margin-left: 15px;
   border-width: 3px;
   border-color: black;
   background-color: white;
+}
+
+.sign_up {
+  margin-left: 15px;
+  background-color: white;
+  border-color: black;
+  border-width: 3px;
 }
 
 .bd-placeholder-img {
