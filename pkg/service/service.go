@@ -1,5 +1,7 @@
 package service
 
+//go:generate mockgen -source=service.go -destination=mocks/mock.go
+
 import (
 	agregator "github.com/seedovan19/Agregator"
 	"github.com/seedovan19/Agregator/pkg/repository"

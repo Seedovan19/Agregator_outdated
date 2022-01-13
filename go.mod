@@ -8,7 +8,11 @@ require (
 	gorm.io/gorm v1.22.4
 )
 
-require github.com/golang-jwt/jwt/v4 v4.2.0
+require (
+	github.com/go-playground/assert/v2 v2.0.1
+	github.com/golang-jwt/jwt/v4 v4.2.0
+	github.com/golang/mock v1.6.0
+)
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
