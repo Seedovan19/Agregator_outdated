@@ -4,6 +4,7 @@ import (
 	"crypto/sha1"
 	"errors"
 	"fmt"
+	"os"
 	"time"
 
 	// "github.com/dgrijalva/jwt-go"
@@ -12,15 +13,15 @@ import (
 	"github.com/seedovan19/Agregator/pkg/repository"
 )
 
-const (
-	salt       = "cqjksdsvnqui154981dmsioa"
-	signingKey = "uihorlefadovlur2938vnuq"
+var (
+	salt       = os.Getenv("SALT")
+	signingKey = os.Getenv("SIGNINGKEY")
 	tokenTTL   = 12 * time.Hour
 )
 
 type tokenClaims struct {
 	jwt.StandardClaims
-	UserId int `json: "user_id"`
+	UserId int `json:"user_id"`
 }
 
 type AuthService struct {
