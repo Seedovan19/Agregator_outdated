@@ -13,7 +13,7 @@ import (
 
 func main() {
 	if err := godotenv.Load("../.env"); err != nil {
-		log.Fatalf("Error loading enviroment variables: %s", err.Error())
+		log.Printf("Error loading enviroment variables: %s", err.Error())
 	}
 
 	db, err := repository.Open_connection(repository.Config{
