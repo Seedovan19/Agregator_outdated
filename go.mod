@@ -1,5 +1,6 @@
 module github.com/seedovan19/Agregator
 
+// +heroku goVersion go1.17
 go 1.17
 
 require (
