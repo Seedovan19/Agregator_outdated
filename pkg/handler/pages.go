@@ -15,7 +15,6 @@ func (h *Handler) Home_page(c *gin.Context) {
 
 	header := c.GetHeader(authorizationHeader)
 	if header != "" {
-		log.Print(header)
 		_, err := h.services.Authorization.ParseToken(header)
 		if err != nil {
 			newErrorResponse(c, http.StatusUnauthorized, err.Error())
