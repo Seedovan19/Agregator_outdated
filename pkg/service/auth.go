@@ -4,7 +4,6 @@ import (
 	"crypto/sha1"
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"time"
 
@@ -42,7 +41,6 @@ func (s *AuthService) GenerateToken(email, password string) (string, error) {
 	// get user from DB
 	user, err := s.repo.GetUser(email, generatePasswordHash(password))
 	if err != nil {
-		log.Printf("%s", generatePasswordHash(password))
 		return "", err
 	}
 
