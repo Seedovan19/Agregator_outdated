@@ -9,25 +9,25 @@ document.querySelector("#submit").onclick = function(){
     .catch(err => console.log(err))
 
 
-    new Promise ( (resolve, reject) => {
-    const xhr = new XMLHttpRequest()
-    xhr.open('GET', '/')
-    xhr.setRequestHeader('Authorization', localStorage.token)
-    xhr.send()
-    xhr.onload  = () => {
-        if(xhr.status >= 400) {
-            reject(xhr.response)
-        }
-        else {
-            resolve(xhr.response)
-        }
-    }
+    // new Promise ( (resolve, reject) => {
+    // const xhr = new XMLHttpRequest()
+    // xhr.open('GET', '/')
+    // xhr.setRequestHeader('Authorization', localStorage.token)
+    // xhr.send()
+    // xhr.onload  = () => {
+    //     if(xhr.status >= 400) {
+    //         reject(xhr.response)
+    //     }
+    //     else {
+    //         resolve(xhr.response)
+    //     }
+    // }
 
-    xhr.onerror = () => {
-        reject(xhr.response)
-    }
-    }).then(result => html(result))
-    .catch(err => console.log(err))
+    // xhr.onerror = () => {
+    //     reject(xhr.response)
+    // }
+    // }).then(result => html(result))
+    // .catch(err => console.log(err))
 };
 
 
