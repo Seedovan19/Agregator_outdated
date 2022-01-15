@@ -4,10 +4,12 @@ document.querySelector("#submit").onclick = function(){
         "password": document.getElementById("password").value
     };
 
-    sendRequest('POST', '/auth/sign-in', object)
-    .then(data => localStorage.token = data.token)
-    .catch(err => console.log(err))
-
+    // sendRequest('POST', '/auth/sign-in', object)
+    // .then(data => localStorage.token = data.token)
+    // .catch(err => console.log(err))
+    $.post("/auth/sign-in", {email: object.email, password: object.password}, function(data) {
+        localStorage.setItem('token', data.token)
+    });
 
     // new Promise ( (resolve, reject) => {
     // const xhr = new XMLHttpRequest()
