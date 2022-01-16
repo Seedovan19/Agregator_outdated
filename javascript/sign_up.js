@@ -6,6 +6,7 @@ document.querySelector("#submit").onclick = function(){
     };
     
     sendRequest('POST', '/auth/sign-up', object)
+    .catch(err => console.log(err))
 };
 
 function sendRequest(method, url, params = null) {
