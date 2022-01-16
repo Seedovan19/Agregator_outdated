@@ -42,6 +42,7 @@ func (h *Handler) Home_page(c *gin.Context) {
 }
 
 func (h *Handler) Warehouse_form_page(c *gin.Context) {
+
 	c.HTML(
 		http.StatusOK,
 		"form.gohtml",
