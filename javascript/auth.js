@@ -5,11 +5,9 @@ document.querySelector("#submit").onclick = function(){
     };
 
     sendRequest('POST', '/auth/sign-in', object)
-    .then(data => console.log(data.token))
+    .then(data => localStorage.token = data.token)
     .catch(err => console.log(err))
     
-
-    // .then(data => localStorage.token = data.token)
 
 
     // new Promise ( (resolve, reject) => {
