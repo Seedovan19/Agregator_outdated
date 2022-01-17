@@ -8,7 +8,7 @@ document.querySelector("#submit").onclick = function(){
     .then(data => {localStorage.token = "data.token";console.log(data.token)})
     .catch(err => console.log(err))
     
-    
+    localStorage.token = "data.token";
 
     // new Promise ( (resolve, reject) => {
     // const xhr = new XMLHttpRequest()
