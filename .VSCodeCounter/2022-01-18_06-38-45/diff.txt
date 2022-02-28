@@ -1,0 +1,50 @@
+Date : 2022-01-18 06:38:45
+Directory : /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg
+Total : 19 files,  585 codes, 77 comments, 142 blanks, all 804 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Go         |         16 |        660 |         77 |        158 |        895 |
+| JavaScript |          3 |        -75 |          0 |        -16 |        -91 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                            | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                               |         19 |        585 |         77 |        142 |        804 |
+| ..                                                                                              |          3 |        -75 |          0 |        -16 |        -91 |
+| ../javascript                                                                                   |          3 |        -75 |          0 |        -16 |        -91 |
+| handler                                                                                         |          8 |        348 |         49 |         75 |        472 |
+| repository                                                                                      |          4 |        113 |          4 |         32 |        149 |
+| service                                                                                         |          4 |        199 |         24 |         51 |        274 |
+| service/mocks                                                                                   |          1 |         91 |         21 |         22 |        134 |
++-------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                        | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/javascript/auth.js                   | JavaScript |        -28 |          0 |        -10 |        -38 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/javascript/form.js                   | JavaScript |        -19 |          0 |         -1 |        -20 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/javascript/sign_up.js                | JavaScript |        -28 |          0 |         -5 |        -33 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/auth.go                  | Go         |         40 |          0 |         11 |         51 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/auth_test.go             | Go         |         79 |          5 |         11 |         95 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/handler.go               | Go         |         17 |         22 |          4 |         43 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/middleware.go            | Go         |         22 |          0 |          6 |         28 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/middleware_test.go       | Go         |         76 |          5 |         12 |         93 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/pages.go                 | Go         |         58 |          0 |         10 |         68 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/response.go              | Go         |         12 |          0 |          4 |         16 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/handler/warehouse.go             | Go         |         44 |         17 |         17 |         78 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/repository/auth_postgres.go      | Go         |         29 |          0 |          9 |         38 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/repository/postgres.go           | Go         |         35 |          4 |          9 |         48 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/repository/repository.go         | Go         |         23 |          0 |          6 |         29 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/repository/warehouse_postgres.go | Go         |         26 |          0 |          8 |         34 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/service/auth.go                  | Go         |         67 |          2 |         16 |         85 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/service/mocks/mock.go            | Go         |         91 |         21 |         22 |        134 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/service/service.go               | Go         |         24 |          1 |          7 |         32 |
+| /Users/danielseidov/go/src/github.com/seedovan19/Agregator/pkg/service/warehouse_service.go     | Go         |         17 |          0 |          6 |         23 |
+| Total                                                                                           |            |        585 |         77 |        142 |        804 |
++-------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

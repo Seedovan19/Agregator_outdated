@@ -31,7 +31,6 @@ func main() {
 	// делаем миграцию в базу данных (создаем таблицы, если они еще не были созданы)
 	db.AutoMigrate(&agregator.Warehouse{})
 	db.AutoMigrate(&agregator.Building{})
-	db.AutoMigrate(&agregator.User{})
 
 	repos := repository.NewRepository(db)
 	services := service.NewService(repos)

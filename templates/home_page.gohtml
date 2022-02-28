@@ -18,12 +18,9 @@
     
   <div class="cover-container h-100 mx-auto">
     
-    {{if .IsAuth}}
-      {{ template "auth_header.gohtml" .}}
-    {{ else }}
-      {{ template "header.gohtml" .}}
-    {{end}} 
     
+    {{ template "header.gohtml" .}}
+  
   
     <main class="px-3">
       <h1 class="title_text">Подберите подходящий склад фулфилмента</h1>

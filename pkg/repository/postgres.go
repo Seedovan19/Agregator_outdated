@@ -3,7 +3,6 @@ package repository
 import (
 	"fmt"
 	"log"
-	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -22,11 +21,11 @@ var db *gorm.DB
 
 func Open_connection(cfg Config) (*gorm.DB, error) {
 	// строка соединения с базой данных
-	// dbURI := fmt.Sprintf("host = %s user = %s dbname = %s password = %s port = %s", cfg.Host, cfg.Username, cfg.DBName, cfg.Password, cfg.Port)
-	connection := os.Getenv("DATABASE_URL")
+	dbURI := fmt.Sprintf("host = %s user = %s dbname = %s password = %s port = %s", cfg.Host, cfg.Username, cfg.DBName, cfg.Password, cfg.Port)
+	// connection := os.Getenv("DATABASE_URL")
 
 	// открываем соединение с базой данных
-	db, err := gorm.Open(postgres.Open(connection), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dbURI), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Error opening database connection: %s", err.Error())
 		return nil, err
