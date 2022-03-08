@@ -5,8 +5,8 @@ document.querySelector("#submit").onclick = function(){
         "square": parseInt(document.getElementById("square").value),
         "class": document.getElementById("class").value, //TODO: класс не видит
         "age_of_construction": document.getElementById("age_of_construction").value,
-        "shelf_cost": parseInt(document.getElementById("shelf_cost").value),
-        "floor_cost": parseInt(document.getElementById("floor_cost").value),
+        "shelf_cost": parseInt(document.getElementById("shelf_cost").value), // TODO: не видит
+        "floor_cost": parseInt(document.getElementById("floor_cost").value), // TODO: не видит
         "description": document.getElementById("description").value
     };
     

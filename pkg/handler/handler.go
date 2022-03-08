@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/seedovan19/Agregator/pkg/service"
 )
@@ -21,8 +23,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.LoadHTMLGlob("./templates/*")
 
 	router.GET("/", h.Home_page)
+	router.GET("/get_records", h.getWarehouseRecords)
 	router.GET("/form", h.Warehouse_form_page)
-
+	router.GET("/test", Test)
 	api := router.Group("/api")
 	{
 		warehouses := api.Group("/warehouses")
@@ -31,4 +34,11 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		}
 	}
 	return router
+}
+
+func Test(c *gin.Context) {
+	c.Header("Content-Type", "application/json")
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Jokes handler not implemented yet",
+	})
 }

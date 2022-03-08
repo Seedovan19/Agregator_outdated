@@ -21,29 +21,6 @@ type WarehouseInsert struct {
 }
 
 func (h *Handler) Add_warehouse(c *gin.Context) {
-
-	// adress := c.PostForm("adress")
-	// name := c.PostForm("name")
-	// square, _ := strconv.ParseInt(c.PostForm("square")[0:], 10, 64)
-	// class := c.PostForm("class")
-	// age_of_construction, _ := time.Parse(c.PostForm("age_of_construction"), "2019-07-10")
-	// shelf_cost, _ := strconv.ParseInt(c.PostForm("shelf_cost")[0:], 10, 64)
-	// floor_cost, _ := strconv.ParseInt(c.PostForm("floor_cost")[0:], 10, 64)
-	// description := c.PostForm("description")
-
-	// img, err := imageupload.Process(c.Request, "file")
-	// if err != nil {
-	// 	log.Fatalf(err.Error())
-	// }
-
-	// thumb, err := imageupload.ThumbnailPNG(img, 300, 300)
-
-	// if err != nil {
-	// 	log.Fatalf(err.Error())
-	// }
-
-	// thumb.Save("../images/saved_images") // правильно сохраняет фотку??
-
 	var insertingValue WarehouseInsert
 
 	if err := c.BindJSON(&insertingValue); err != nil {
@@ -72,6 +49,15 @@ func (h *Handler) Add_warehouse(c *gin.Context) {
 	}
 
 	log.Printf("Inserted warehouse with id: %d", id)
+}
 
-	c.Redirect(http.StatusMovedPermanently, "/")
+func (h *Handler) getWarehouseRecords(c *gin.Context) {
+	posts, err := h.services.Warehouse.Show_warehouse_records()
+	if err != nil {
+		log.Print(err.Error())
+	}
+
+	c.Header("Content-Type", "application/json")
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.IndentedJSON(http.StatusOK, posts)
 }
