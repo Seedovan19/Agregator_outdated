@@ -13,9 +13,8 @@ func NewWarehousePostgres(db *gorm.DB) *WarehousePostgres {
 	return &WarehousePostgres{db: db}
 }
 
-func (r *WarehousePostgres) Add_warehouse_record(warehouse_data agregator.Warehouse, building_data agregator.Building) (int, error) {
+func (r *WarehousePostgres) Add_warehouse_record(warehouse_data agregator.Warehouse) (int, error) {
 	result := r.db.Create(&warehouse_data)
-	r.db.Create(&building_data)
 	return int(warehouse_data.ID), result.Error
 }
 

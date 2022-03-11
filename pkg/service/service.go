@@ -8,7 +8,7 @@ import (
 )
 
 type Warehouse interface {
-	Add_warehouse_record(warehouse_data agregator.Warehouse, building_data agregator.Building) (int, error)
+	Add_warehouse_record(warehouse_data agregator.Warehouse) (int, error)
 	Show_warehouse_records() ([]agregator.Warehouse, error)
 }
 

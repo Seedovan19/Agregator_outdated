@@ -37,6 +37,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 }
 
 func Test(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.Header("Content-Type", "application/json")
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Jokes handler not implemented yet",
